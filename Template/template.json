@@ -2604,7 +2604,6 @@
     "name": "plexrequests",
     "description": "Simple automated way for users to request new content for Plex.",
     "logo": "https://raw.githubusercontent.com/linuxserver/beta-templates/master/lsiodev/img/plexrequests-icon.png",
-    "image": "linuxserver/plexrequests:latest",
     "categories": [
       "Downloaders",
       "Other",
@@ -2612,16 +2611,10 @@
       "Tools"
     ],
     "platform": "linux",
-    "restart_policy": "unless-stopped",
-    "ports": [
-      "3000:3000/tcp"
-    ],
-    "volumes": [
-      {
-        "container": "/config",
-        "bind": "/portainer/Files/AppData/Config/PlexRequests"
-      }
-    ],
+    "repository": {
+      "url": "https://github.com/siddharths2710/selfhosted_templates",
+      "stackfile": "Template/Stack/plexrequests.yml"
+    },
     "env": [
       {
         "name": "PUID",
@@ -2631,12 +2624,17 @@
       {
         "name": "PGID",
         "label": "PGID",
-        "default": "100"
+        "default": "1000"
       },
       {
         "name": "URL_BASE",
         "label": "URL_BASE",
         "set": ""
+      },
+      {
+        "name": "PORT",
+        "label": "PORT",
+        "set":"8080"
       }
     ]
   },
